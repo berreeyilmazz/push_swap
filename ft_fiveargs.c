@@ -6,13 +6,13 @@
 /*   By: havyilma <havyilma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 23:05:27 by havyilma          #+#    #+#             */
-/*   Updated: 2023/04/09 04:25:45 by havyilma         ###   ########.fr       */
+/*   Updated: 2023/04/15 16:46:38 by havyilma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ft_find_max(t_data *data, char a_or_b)
+int	ft_find_max(t_data *data, char a_or_b)
 {
 	int	ctrl;
 	int	i;
@@ -27,7 +27,7 @@ void	ft_find_max(t_data *data, char a_or_b)
 				ctrl = data->stack_a[i];
 		}
 	}
-	else if (a_or_b == 'b')
+	else
 	{
 		ctrl = data->stack_b[0];
 		while (++i < data->size_b)
@@ -39,12 +39,13 @@ void	ft_find_max(t_data *data, char a_or_b)
 	return (ctrl);
 }
 
-void	ft_find_min(t_data *data, char a_or_b)
+int	ft_find_min(t_data *data, char a_or_b)
 {
 	int	ctrl;
 	int	i;
 
 	i = -1;
+	ctrl = 0;
 	if (a_or_b == 'a')
 	{
 		ctrl = data->stack_a[0];
@@ -54,7 +55,7 @@ void	ft_find_min(t_data *data, char a_or_b)
 				ctrl = data->stack_a[i];
 		}
 	}
-	else if (a_or_b == 'b')
+	else
 	{
 		ctrl = data->stack_b[0];
 		while (++i < data->size_b)
@@ -68,7 +69,7 @@ void	ft_find_min(t_data *data, char a_or_b)
 
 void	ft_three_args(t_data *data)
 {
-	if (check_sorted(data))
+	if (check_sorted(data) == 0)
 		return;
 	if (data->stack_a[0] == ft_find_min(data, 'a'))
 	{
@@ -96,7 +97,21 @@ void	ft_three_args(t_data *data)
 
 void	ft_five_args(t_data *data)
 {
-	data->size_b--;
+	if (check_sorted(data) == 0)
+		return;
+	while (data->stack_a[0] <= 3)
+		ft_ra (data->stack_a, data);
+	if (data->stack_a[0] > 3)
+		ft_pb (data->stack_a, data->stack_b, data);
+	while (data->stack_a[0] <= 3)
+		ft_ra (data->stack_a, data);
+	if (data->stack_a[0] > 3)
+		ft_pb (data->stack_a, data->stack_b, data);
+	ft_three_args (data);
+	if (data->stack_b[0] < data->stack_b[1])
+		ft_sa (data->stack_a);
+	ft_pa (data->stack_a, data->stack_b, data);
+	ft_pa (data->stack_a, data->stack_b, data);
 }
 
 

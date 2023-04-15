@@ -6,7 +6,7 @@
 /*   By: havyilma <havyilma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/06 21:33:33 by havyilma          #+#    #+#             */
-/*   Updated: 2023/04/09 02:35:01 by havyilma         ###   ########.fr       */
+/*   Updated: 2023/04/15 16:44:48 by havyilma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int ft_check_all(t_data *data, char **av, int ac)
 		write (1,"Error!", 6);
 		return (0);
 	}
-	return (ft_count_them(data, av, ac) || ft_if_the_same (data));
+	return (ft_count_them(data, av, ac) && ft_if_the_same (data));
 }
 
 int	ft_check_av_and_send (char **av, int i, int j)
@@ -73,10 +73,10 @@ int	ft_if_the_same (t_data *data)
 	int	j;
 
 	i = 0;
-	while (i < data->total_size - 2)
+	while (i < data->total_size - 1)
 	{
-		j = 0;
-		while (j < data->total_size - 1)
+		j = 1;
+		while (j < data->total_size - 2)
 		{
 			if (data->sorted[i] == data->sorted[i + j])
 			{

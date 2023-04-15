@@ -6,7 +6,7 @@
 /*   By: havyilma <havyilma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 02:13:05 by havyilma          #+#    #+#             */
-/*   Updated: 2023/04/09 03:16:38 by havyilma         ###   ########.fr       */
+/*   Updated: 2023/04/15 16:43:17 by havyilma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ void	ft_initialize_stack_a(t_data *data)
 	data->stack_b = malloc(sizeof(int) * data->total_size - 2);
 	data->sorted = malloc(sizeof(int) * data->total_size);
 
+	
 	while (i < data->total_size)
 	{
 		data->stack_a[i] = ft_atoi(cut[i]);

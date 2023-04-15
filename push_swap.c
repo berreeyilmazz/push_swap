@@ -6,7 +6,7 @@
 /*   By: havyilma <havyilma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/06 21:30:25 by havyilma          #+#    #+#             */
-/*   Updated: 2023/04/09 03:17:18 by havyilma         ###   ########.fr       */
+/*   Updated: 2023/04/15 16:42:35 by havyilma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,11 +34,7 @@ int	main (int ac, char **av)
 	while (++i <= ac - 1)
 		ft_onlystr (data, av[i]);
 	ft_initialize_stack_a (data);
-	if (data->total_size <= 3)
-		ft_three_args (data);
-	else if (data->total_size < 6)
-		ft_five_args (data);
-	else
-		ft_sort_process (data);
+
+	ft_sort_dealer(data);
 	return (0);
 }

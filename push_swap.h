@@ -6,7 +6,7 @@
 /*   By: havyilma <havyilma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/06 21:21:46 by havyilma          #+#    #+#             */
-/*   Updated: 2023/04/09 04:12:42 by havyilma         ###   ########.fr       */
+/*   Updated: 2023/04/15 15:57:34 by havyilma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,8 @@ int		ft_if_the_same (t_data *data);
 int		ft_sort_process(t_data *data);
 void	ft_three_args(t_data *data);
 void	ft_five_args(t_data *data);
+int		ft_find_max(t_data *data, char a_or_b);
+int		ft_find_min(t_data *data, char a_or_b);
 int		check_sorted(t_data *data);
 void	ft_sa (int *data);
 void	ft_sb (int *data);
@@ -62,6 +64,12 @@ void	ft_rr (int *stack_a, int *stack_b, t_data *data);
 void	ft_rra (int *stack, t_data *data);
 void	ft_rrb (int *stack, t_data *data);
 void	ft_rrr(int	*stack_a, int *stack_b, t_data *data);
+void	ft_radix (t_data *data);
+int		ft_find_maximum_bit (t_data *data);
+void	ft_sort_dealer (t_data *data);
+void	ft_free (t_data *data);
+
+
 
 
 #endif
