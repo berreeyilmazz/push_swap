@@ -19,11 +19,10 @@ void	ft_bubble_sort (t_data *data)
 	int j;
 
 	i = 0;
-
-	while (i < data->total_size)
+	while (i < data->size_a - 1)
 	{
 		j= 0;
-		while (j < data->total_size)
+		while (j < data->size_a - 1)
 		{
 			if (data->sorted[j] > data->sorted[j + 1])
 			{
@@ -35,7 +34,7 @@ void	ft_bubble_sort (t_data *data)
 		}
 		i++;
 	}
-	ft_put_index (data);
+	//ft_put_index (data);
 
 }
 
@@ -48,7 +47,7 @@ void	ft_put_index (t_data *data)
 	while (i < data->total_size)
 	{
 		j = 0;
-		while (j < data->total_size + 1)
+		while (j < data->total_size)
 		{
 			if (data->stack_a[i] == data->sorted[j])
 				data->stack_a[i] = j;

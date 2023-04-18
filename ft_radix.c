@@ -12,46 +12,57 @@
 
 #include "push_swap.h"
 
-int	ft_find_maximum_bit (t_data *data)
-{
-	int	maximum;
-	int	rtrn;
-
-	rtrn = 0;
-	maximum = data->size_a;
-	while (maximum >= 1)
-	{
-		rtrn++;
-		maximum /= 2;
-	}
-		printf ("   %d   %d\n", maximum, rtrn);
-	return (rtrn);
-}
-
-void	ft_radix (t_data *data)
+void ft_find_maximum_bit(t_data *data)
 {
 	int	max;
-	int	indx;
-	int	i;
 
-	max = ft_find_maximum_bit (data);
-	indx = 0;
-	while (indx < max)
+	data->max_bit = 0;
+	max = data->size_a - 1;
+	while (max > 0)
 	{
-		if (check_sorted (data) == 1)
-			return;
-
-		i = 0;
-		while (i < data->size_a)
-		{
-			if (data->stack_a[0] >> i & 1)
-				ft_ra (data->stack_a, data);
-			else
-				ft_pb(data->stack_a, data->stack_b, data);
-		}
-		i = 0;
-		while (i < data->size_b)
-			ft_pa (data->stack_a, data->stack_b, data);
-		indx++;
+		data->max_bit++;
+		max /= 2;
 	}
 }
+
+int	find_index(t_data *data, int nbr)
+{
+	int	i;
+
+	i = 0;
+	while (i < data->total_size)
+	{
+		if (data->sorted[i] == nbr)
+			return (i);
+		i++;
+	}
+	return (0);
+}
+
+void	ft_radix(t_data *data)
+{
+	int	i;
+	int	x;
+	int	alen;
+	i = 0;
+	alen = data->size_a;
+	while (i < data->max_bit)
+	{
+		x = 0;
+		while (x < alen)
+		{
+			if ((find_index(data, data->stack_a[0]) >> i & 1))
+				ft_ra(data);
+			else
+				ft_pb(data);
+			x++;
+		}
+		while (data->size_b)
+			ft_pa(data);
+		i++;
+	}
+}
+/*for (int i = 0; i < data->size_a; i++)
+	{
+		printf("[  %d] ", data->stack_a[i]);
+	}*/

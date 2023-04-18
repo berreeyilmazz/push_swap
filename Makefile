@@ -10,22 +10,25 @@
 #                                                                              #
 # **************************************************************************** #
 
-SRCS =	*.c
+SRCS = check_at_the_beginning.c ft_atoi_dealer.c ft_bubble_and_index.c ft_fiveargs.c ft_free.c \
+		ft_libft.c ft_push_opr.c ft_r_rotate_opr.c ft_radix.c ft_rotate_opr.c ft_sort_them.c ft_split.c \
+		ft_swap_opr.c push_swap.c
 
+OBJECTS = $(SRCS:.c=.o)
+CC = cc
 NAME = push_swap
+FLAGS = -Wall -Werror -Wextra
 
-
-$(NAME):
-	gcc -Wall -Wextra -Werror $(SRCS) -o $(NAME)
-
-all:
-	$(NAME)
+$(NAME): $(OBJECTS)
+	$(CC) $(OBJECTS) -o $(NAME)
 
 clean:
-	rm $(NAME)
+	rm -rf *.o
 
 fclean: clean
+	rm -rf ${NAME}
 
 re: fclean all
 
-.PHONY:  all clean fclean re
+.PHONY = all clean fclean re
+

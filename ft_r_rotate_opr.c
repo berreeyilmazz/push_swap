@@ -12,39 +12,51 @@
 
 #include "push_swap.h"
 
-void	ft_rra (int *stack, t_data *data)
+void	ft_rra (t_data *data)
 {
 	int	i;
+	int	temp;
 
-	i = -1;
-	stack[data->size_a - 1] = stack[0] ;
-	while (++i < data->size_a - 1)
-		stack[i] = stack[i + 1];
+	i = data->size_a;
+	temp = data->stack_a[data->size_a - 1];
+	data->stack_a[data->size_a - 1] = data->stack_a[0];
+	while (--i > 0)
+		data->stack_a[i] = data->stack_a[i - 1];
+	data->stack_a[i] = temp;
 	write (1, "rra\n", 4);
 }
 
-void	ft_rrb (int *stack, t_data *data)
+void	ft_rrb (t_data *data)
 {
 	int	i;
+	int	temp;
 
-	i = -1;
-	stack[data->size_a - 1] = stack[0] ;
-	while (++i < data->size_a - 1)
-		stack[i] = stack[i + 1];
+	i = data->size_b;
+	temp = data->stack_b[data->size_b - 1];
+	data->stack_b[data->size_b - 1] = data->stack_b[0];
+	while (--i > 0)
+		data->stack_b[i] = data->stack_b[i - 1];
+	data->stack_b[i] = temp;
 	write (1, "rrb\n", 4);
 }
 
-void	ft_rrr(int	*stack_a, int *stack_b, t_data *data)
+void	ft_rrr(t_data *data)
 {
 	int	i;
+	int	tempa;
+	int	tempb;
 
-	i = -1;
-	stack_b[data->size_a - 1] = stack_a[0];
-	while (++i < data->size_a - 1)
-		stack_a[i] = stack_a[i + 1];
-	i = -1;
-	stack_b[data->size_a - 1] = stack_b[0] ;
-	while (++i < data->size_a - 1)
-		stack_b[i] = stack_b[i + 1];
+	i = data->size_a;
+	tempa = data->stack_a[data->size_a - 1];
+	data->stack_b[data->size_a - 1] = data->stack_a[0];
+	while (--i > 0)
+		data->stack_a[i] = data->stack_a[i - 1];
+	data->stack_a[i] = tempa;
+	i = data->size_b;
+	tempb = data->stack_b[data->size_b - 1];
+	data->stack_b[data->size_b - 1] = data->stack_b[0];
+	while (--i > 0)
+		data->stack_b[i] = data->stack_b[i - 1];
+	data->stack_b[i] = tempb;
 	write (1, "rrr\n", 4);
 }

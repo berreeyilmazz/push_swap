@@ -14,13 +14,16 @@
 
 void ft_sort_dealer (t_data *data)
 {
+	ft_find_maximum_bit(data);
+	if (check_sorted(data) == 1)
+		exit(1);
 	if (data->total_size == 2)
-		ft_sa (data->stack_a);
-	if (data->total_size == 3)
+		ft_sa (data);
+	else if (data->total_size == 3)
 		ft_three_args (data);
 	else if (data->total_size == 5)
 		ft_five_args (data);
-	else if (data->total_size == 4 || data->total_size >= 6)
+	else if (data->total_size >= 6 || data->total_size == 4)
 		ft_radix (data);
 	ft_free (data);
 }

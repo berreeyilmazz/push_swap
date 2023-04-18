@@ -12,106 +12,56 @@
 
 #include "push_swap.h"
 
-int	ft_find_max(t_data *data, char a_or_b)
-{
-	int	ctrl;
-	int	i;
-
-	i = -1;
-	if (a_or_b == 'a')
-	{
-		ctrl = data->stack_a[0];
-		while (++i < data->size_a)
-		{
-			if (ctrl < data->stack_a[i])
-				ctrl = data->stack_a[i];
-		}
-	}
-	else
-	{
-		ctrl = data->stack_b[0];
-		while (++i < data->size_b)
-		{
-			if (ctrl < data->stack_b[i])
-				ctrl = data->stack_b[i];
-		}
-	}
-	return (ctrl);
-}
-
-int	ft_find_min(t_data *data, char a_or_b)
-{
-	int	ctrl;
-	int	i;
-
-	i = -1;
-	ctrl = 0;
-	if (a_or_b == 'a')
-	{
-		ctrl = data->stack_a[0];
-		while (++i > data->size_a)
-		{
-			if (ctrl > data->stack_a[i])
-				ctrl = data->stack_a[i];
-		}
-	}
-	else
-	{
-		ctrl = data->stack_b[0];
-		while (++i < data->size_b)
-		{
-			if (ctrl > data->stack_b[i])
-				ctrl = data->stack_b[i];
-		}
-	}
-	return (ctrl);
-}
-
 void	ft_three_args(t_data *data)
 {
-	if (check_sorted(data) == 0)
-		return;
-	if (data->stack_a[0] == ft_find_min(data, 'a'))
+	if ((data->stack_a[0] > data->stack_a[2])
+		&& (data->stack_a[2] > data->stack_a[1]))
 	{
-		ft_sa (data->stack_a);
-		ft_rra (data->stack_a, data);
+		ft_rra(data);
+		ft_rra(data);
 	}
-	else if (data->stack_a[0] == ft_find_max(data, 'a'))
+	else if ((data->stack_a[1] > data->stack_a[2])
+		&& (data->stack_a[2] > data->stack_a[0]))
 	{
-		if (data->stack_a[1] > data->stack_a[2])
-		{
-			ft_sa (data->stack_a);
-			ft_ra (data->stack_a, data);
-		}
-		else
-			ft_rra (data->stack_a, data);
+		ft_rra(data);
+		ft_sa(data);
 	}
-	else
+	else if ((data->stack_a[1] > data->stack_a[0])
+		&& (data->stack_a[0] > data->stack_a[2]))
+		ft_rra(data);
+	else if ((data->stack_a[2] > data->stack_a[0])
+		&& (data->stack_a[0] > data->stack_a[1]))
+		ft_sa(data);
+	else if ((data->stack_a[0] > data->stack_a[1])
+		&& (data->stack_a[1] > data->stack_a[2]))
 	{
-		if (data->stack_a[1] > data->stack_a[2])
-			ft_ra (data->stack_a, data);
-		else
-			ft_sa (data->stack_a);
-	}
+		ft_ra(data);
+		ft_sa(data);
+	}	
 }
 
 void	ft_five_args(t_data *data)
 {
-	if (check_sorted(data) == 0)
-		return;
-	while (data->stack_a[0] <= 3)
-		ft_ra (data->stack_a, data);
-	if (data->stack_a[0] > 3)
-		ft_pb (data->stack_a, data->stack_b, data);
-	while (data->stack_a[0] <= 3)
-		ft_ra (data->stack_a, data);
-	if (data->stack_a[0] > 3)
-		ft_pb (data->stack_a, data->stack_b, data);
-	ft_three_args (data);
-	if (data->stack_b[0] < data->stack_b[1])
-		ft_sa (data->stack_a);
-	ft_pa (data->stack_a, data->stack_b, data);
-	ft_pa (data->stack_a, data->stack_b, data);
+	int i = -1;
+	while (++i < data->size_a)
+		printf("stack_a %d  %d \n", i, data->stack_a[i]);
+	int j = -1;
+	while (++j < data->size_a)
+		printf("sorted %d  %d \n", j, data->sorted[j]);
+
+	while (data->sorted[2] <= data->stack_a[0])
+		ft_ra(data);
+	if (data->sorted[2] > data->stack_a[0])
+		ft_pb(data);
+	while (data->sorted[2] <= data->stack_a[0])
+		ft_ra(data);
+	if (data->sorted[2] > data->stack_a[0])
+		ft_pb(data);
+	ft_three_args(data);
+	if (data->stack_b[1] > data->stack_b[0])
+		ft_sb(data);
+	ft_pa(data);
+	ft_pa(data);
 }
 
 

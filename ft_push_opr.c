@@ -12,34 +12,92 @@
 
 #include "push_swap.h"
 
-void ft_pa (int *stack_a, int *stack_b, t_data *data)
+int	*decrease_indice(int *arr, int size)
+{
+	int	i;
+
+	i = size - 1;
+	while (i)
+	{
+		arr[i] = arr[i - 1];
+		i--;
+	}
+	return (arr);
+}
+
+int	*increase_indice(int *arr, int size)
 {
 	int	i;
 
 	i = 0;
-	stack_a[0] = stack_b[0];
-	while (++i < data->size_a + 1)
-		stack_a[i] = stack_a[i + 1];
-	i = -1;
-	while (++i < data->size_b - 1)
-		stack_b[i] = stack_b[i + 1];
-	data->size_a++;
-	data->size_b--;
-	write (1, "pa\n", 3);
+	while (i < size)
+	{
+		arr[i] = arr[i + 1];
+		i++;
+	}
+	return (arr);
 }
 
-void ft_pb (int *stack_a, int *stack_b, t_data *data)
+void	ft_pa(t_data *data)
 {
-	int	i;
-
-	i = 0;
-	stack_b[0] = stack_a[0];
-	while (++i < data->size_b + 1)
-		stack_b[i] = stack_b[i + 1];
-	i = -1;
-	while (++i < data->size_a - 1)
-		stack_a[i] = stack_a[i + 1];
-	data->size_b++;
-	data->size_a--;
-	write (1, "pb\n", 3);
+	if (data->size_b > 0)
+	{
+		data->size_a++;
+		data->stack_a = decrease_indice(data->stack_a, data->size_a);
+		data->stack_a[0] = data->stack_b[0];
+		data->size_b--;
+		data->stack_b = increase_indice(data->stack_b, data->size_b);
+		write(1, "pa\n", 3);
+	}
 }
+
+void	ft_pb(t_data *data)
+{
+	if (data->size_a > 0)
+	{
+		data->size_b++;
+		data->stack_b = decrease_indice(data->stack_b, data->size_b);
+		data->stack_b[0] = data->stack_a[0];
+		data->size_a--;
+		data->stack_a = increase_indice(data->stack_a, data->size_a);
+		write(1, "pb\n", 3);
+	}
+}
+
+/*
+void ft_pa(t_data *data)
+{
+	if (data->size_b > 0)
+	{
+		int	i;
+		data->size_a++;
+		data->size_b--;
+
+		i = data->size_a;
+		while (--i > 0)
+			data->stack_a[i] = data->stack_a[i - 1];
+		data->stack_a[0] = data->stack_b[0];
+		i = -1;
+		while (++i < data->size_b)
+			data->stack_b[i] = data->stack_b[i + 1];
+		write(1, "pa\n", 3);
+	}
+}
+
+void ft_pb(t_data *data)
+{
+	if (data->size_a > 0)
+	{
+		int i;
+		data->size_b++;
+		data->size_a--;
+		i = data->size_b;
+		while (i-- > 0)
+			data->stack_b[i] = data->stack_b[i - 1];
+		data->stack_b[0] = data->stack_a[0];
+		i = -1;
+		while (++i < data->size_a)
+			data->stack_a[i] = data->stack_a[i + 1];
+		write(1, "pb\n", 3);
+	}
+}*/

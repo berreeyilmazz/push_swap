@@ -28,12 +28,13 @@ typedef struct s_data
 	int		total_size;
 	char	*str;
 	int		*sorted;
+	int		max_bit;
 
 }	t_data;
 
 int		ft_check_av_and_send (char **av, int i, int j);
-int		ft_count_them(t_data *data, char **av, int ac);
-int 	ft_check_all(t_data *data, char **av, int ac);
+int		ft_count_them(char *str);
+int 	ft_check_all(char **av);
 void	ft_onlystr(t_data *data, char *av);
 int		ft_atoi(char *str);
 int		word_counter(const char *str, char c);
@@ -47,27 +48,38 @@ void	ft_initialize_stack_a (t_data *data);
 void	ft_bubble_sort (t_data *data);
 void	ft_put_index (t_data *data);
 int		ft_if_the_same (t_data *data);
-int		ft_sort_process(t_data *data);
 void	ft_three_args(t_data *data);
 void	ft_five_args(t_data *data);
 int		ft_find_max(t_data *data, char a_or_b);
 int		ft_find_min(t_data *data, char a_or_b);
 int		check_sorted(t_data *data);
-void	ft_sa (int *data);
-void	ft_sb (int *data);
-void	ft_ss (int *data1, int *data2);
-void 	ft_pa (int *stack_a, int *stack_b, t_data *data);
-void 	ft_pb (int *stack_a, int *stack_b, t_data *data);
-void	ft_ra (int *stack, t_data *data);
-void	ft_rb (int *stack, t_data *data);
-void	ft_rr (int *stack_a, int *stack_b, t_data *data);
-void	ft_rra (int *stack, t_data *data);
-void	ft_rrb (int *stack, t_data *data);
-void	ft_rrr(int	*stack_a, int *stack_b, t_data *data);
-void	ft_radix (t_data *data);
-int		ft_find_maximum_bit (t_data *data);
+void	ft_sa (t_data *data);
+void	ft_sb (t_data *data);
+void	ft_ss (t_data *data2);
+void 	ft_pa (t_data *data);
+void 	ft_pb (t_data *data);
+void	ft_ra (t_data *data);
+void	ft_rb (t_data *data);
+void	ft_rr (t_data *data);
+void	ft_rra (t_data *data);
+void	ft_rrb (t_data *data);
+void	ft_rrr(t_data *data);
+void	ft_radix(t_data *data);
+void	ft_find_maximum_bit (t_data *data);
 void	ft_sort_dealer (t_data *data);
 void	ft_free (t_data *data);
+int		ft_median (t_data *data);
+int	ft_ctrl_hexa (t_data *data);
+int	*decrease_indice(int *arr, int size);
+int	*increase_indice(int *arr, int size);
+int	find_index(t_data *data, int nbr);
+
+
+
+
+
+
+
 
 
 

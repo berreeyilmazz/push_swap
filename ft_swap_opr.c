@@ -12,36 +12,36 @@
 
 #include "push_swap.h"
 
-void	ft_sa (int *data)
+void	ft_sa (t_data *data)
 {
 	int	temp;
 
-	temp = data[0];
-	data[0] = data[1];
-	data[1] = data[0];
+	temp = data->stack_a[0];
+	data->stack_a[0] = data->stack_a[1];
+	data->stack_a[1] = temp;
 	write (1, "sa\n", 3);
 }
 
-void	ft_sb (int *data)
+void	ft_sb (t_data *data)
 {
 	int	temp;
 
-	temp = data[0];
-	data[0] = data[1];
-	data[1] = data[0];
+	temp = data->stack_b[0];
+	data->stack_b[0] = data->stack_b[1];
+	data->stack_b[1] = temp;
 	write (1, "sb\n", 3);
 }
 
-void	ft_ss (int *data1, int *data2)
+void	ft_ss (t_data *data)
 {
-	int	temp1;
-	int	temp2;
+	int	tempa;
+	int	tempb;
 
-	temp1 = data1[0];
-	temp2 = data2[0];
-	data1[0] = data1[1];
-	data1[1] = temp1;
-	data2[0] = data2[1];
-	data2[1] = temp2;
+	tempa = data->stack_a[0];
+	tempb = data->stack_b[0];
+	data->stack_a[0] = data->stack_a[1];
+	data->stack_a[1] = tempa;
+	data->stack_b[0] = data->stack_b[1];
+	data->stack_b[1] = tempb;
 	write (1, "ss\n", 3);
 }
