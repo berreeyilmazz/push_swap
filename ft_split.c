@@ -6,13 +6,13 @@
 /*   By: havyilma <havyilma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 16:45:13 by havyilma          #+#    #+#             */
-/*   Updated: 2023/04/08 19:43:27 by havyilma         ###   ########.fr       */
+/*   Updated: 2023/04/24 14:11:59 by havyilma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	word_counter(const char *str, char c)
+int	ft_word_counter(const char *str, char c)
 {
 	int	count;
 	int	i;
@@ -35,7 +35,7 @@ int	word_counter(const char *str, char c)
 	return (count);
 }
 
-int	word_len(const char *str, char c)
+int	ft_word_length(const char *str, char c)
 {
 	int	i;
 	int	count;
@@ -52,12 +52,12 @@ int	word_len(const char *str, char c)
 	return (count);
 }
 
-char	*stringer(const char *src, char c)
+char	*ft_put_string(const char *src, char c)
 {
 	char	*ret;
 	int		i;
 
-	ret = malloc(sizeof(char) * word_len(src, c) + 1);
+	ret = malloc(sizeof(char) * ft_word_length(src, c) + 1);
 	i = 0;
 	while (*src && *src != c)
 	{
@@ -77,7 +77,7 @@ char	**ft_split(const char *s, char c)
 
 	if (!s)
 		return (NULL);
-	size = word_counter(s, c);
+	size = ft_word_counter(s, c);
 	result = malloc(sizeof(char *) * (size + 1));
 	if (!result)
 		return (0);
@@ -87,7 +87,7 @@ char	**ft_split(const char *s, char c)
 	{
 		while (s[i] == c)
 			i++;
-		result[j] = stringer(&s[i], c);
+		result[j] = ft_put_string(&s[i], c);
 		while (s[i] != c && s[i])
 			i++;
 		j++;

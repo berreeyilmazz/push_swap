@@ -6,16 +6,17 @@
 /*   By: havyilma <havyilma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/09 01:25:52 by havyilma          #+#    #+#             */
-/*   Updated: 2023/04/09 02:02:31 by havyilma         ###   ########.fr       */
+/*   Updated: 2023/04/18 15:43:18 by havyilma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void ft_ra (t_data *data)
+void	ft_ra(t_data *data)
 {
 	int	i;
 	int	temp;
+
 	if (data->size_a >= 2)
 	{
 		i = 0;
@@ -28,13 +29,13 @@ void ft_ra (t_data *data)
 		data->stack_a[i] = temp;
 		write(1, "ra\n", 3);
 	}
-
 }
 
-void	ft_rb (t_data *data)
+void	ft_rb(t_data *data)
 {
 	int	i;
-	int temp;
+	int	temp;
+
 	if (data->size_b >= 2)
 	{
 		i = -1;
@@ -43,13 +44,13 @@ void	ft_rb (t_data *data)
 			data->stack_b[i] = data->stack_b[i + 1];
 		data->stack_b[i] = temp;
 		write(1, "rb\n", 3);
-}
+	}
 }
 
-void	ft_rr ( t_data *data)
+void	ft_rr(t_data *data)
 {
 	int	i;
-	int tempa;
+	int	tempa;
 	int	tempb;
 
 	i = -1;

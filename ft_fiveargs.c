@@ -6,11 +6,25 @@
 /*   By: havyilma <havyilma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 23:05:27 by havyilma          #+#    #+#             */
-/*   Updated: 2023/04/15 16:46:38 by havyilma         ###   ########.fr       */
+/*   Updated: 2023/04/24 13:38:44 by havyilma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+int	check_sorted(t_data *data)
+{
+	int	i;
+
+	i = 0;
+	while (i < data->total_size - 1)
+	{
+		if (data->stack_a[i] > data->stack_a[i + 1])
+			return (0);
+		i++;
+	}
+	return (1);
+}
 
 void	ft_three_args(t_data *data)
 {
@@ -37,18 +51,11 @@ void	ft_three_args(t_data *data)
 	{
 		ft_ra(data);
 		ft_sa(data);
-	}	
+	}
 }
 
 void	ft_five_args(t_data *data)
 {
-	int i = -1;
-	while (++i < data->size_a)
-		printf("stack_a %d  %d \n", i, data->stack_a[i]);
-	int j = -1;
-	while (++j < data->size_a)
-		printf("sorted %d  %d \n", j, data->sorted[j]);
-
 	while (data->sorted[2] <= data->stack_a[0])
 		ft_ra(data);
 	if (data->sorted[2] > data->stack_a[0])
@@ -62,19 +69,4 @@ void	ft_five_args(t_data *data)
 		ft_sb(data);
 	ft_pa(data);
 	ft_pa(data);
-}
-
-
-int	check_sorted(t_data *data)
-{
-	int	i;
-
-	i = 0;
-	while (i < data->total_size)
-	{
-		if (data->stack_a[i] != i + 1)
-			return (0);
-		i++;
-	}
-	return (1);
 }

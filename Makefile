@@ -6,29 +6,33 @@
 #    By: havyilma <havyilma@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/09 01:54:21 by havyilma          #+#    #+#              #
-#    Updated: 2023/04/09 01:58:16 by havyilma         ###   ########.fr        #
+#    Updated: 2023/04/24 14:29:40 by havyilma         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRCS = check_at_the_beginning.c ft_atoi_dealer.c ft_bubble_and_index.c ft_fiveargs.c ft_free.c \
-		ft_libft.c ft_push_opr.c ft_r_rotate_opr.c ft_radix.c ft_rotate_opr.c ft_sort_them.c ft_split.c \
-		ft_swap_opr.c push_swap.c
+SRCS = check_at_the_beginning.c ft_atoi_dealer.c ft_bubble_and_sortdealer.c ft_fiveargs.c \
+		ft_libft.c ft_push_opr.c ft_r_rotate_opr.c ft_radix.c ft_rotate_opr.c ft_split.c \
+		ft_swap_opr.c push_swap.c ft_error_and_free.c
 
 OBJECTS = $(SRCS:.c=.o)
-CC = cc
+
 NAME = push_swap
+
+CC = gcc
+
 FLAGS = -Wall -Werror -Wextra
 
-$(NAME): $(OBJECTS)
-	$(CC) $(OBJECTS) -o $(NAME)
+$(NAME):		$(OBJECTS)
+				$(CC) $(CFLAGS) $(OBJECTS) -o $(NAME)
+
+all:			$(NAME)
 
 clean:
-	rm -rf *.o
+		rm -rf $(OBJECTS)
 
-fclean: clean
-	rm -rf ${NAME}
+fclean:	clean
+		rm -rf ${NAME}
 
 re: fclean all
 
 .PHONY = all clean fclean re
-

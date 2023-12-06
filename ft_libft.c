@@ -6,42 +6,27 @@
 /*   By: havyilma <havyilma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/06 22:20:14 by havyilma          #+#    #+#             */
-/*   Updated: 2023/04/08 18:32:49 by havyilma         ###   ########.fr       */
+/*   Updated: 2023/04/27 16:18:34 by havyilma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	ft_atoi(char *str)
+void	ft_stack_initialize(t_data *data, char *av1)
 {
-	long		i;
-	long		sign;
-	long		result;
-
-	i = 0;
-	result = 0;
-	sign = 1;
-	while (str[i] == 32 || (str[i] >= 9 && str[i] <= 13))
-		i++;
-	if (str[i] == '+' || str[i] == '-')
-	{
-		if (str[i] == '-')
-			sign = sign * -1;
-		i++;
-	}
-	while (str[i] >= 48 && str[i] <= 57)
-	{
-		result = (result * 10) + str[i] - 48;
-		i++;
-		if (result * sign > 2147483647)
-			return (-1);
-		else if (result * sign < -2147483648)
-			return (0);
-	}
-	return (result * sign);
+	data->stack_a = 0;
+	data->stack_b = 0;
+	data->size_a = 0;
+	data->size_b = 0;
+	data->total_size = 0;
+	data->sorted = 0;
+	data->max_bit = 0;
+	data->str = av1;
+	if (!data->str || !data->str[0])
+		exit(0);
 }
 
-int	ft_strlen (const char *str)
+int	ft_strlen(const char *str)
 {
 	int	i;
 

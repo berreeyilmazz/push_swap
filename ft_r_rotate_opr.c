@@ -6,13 +6,13 @@
 /*   By: havyilma <havyilma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/09 01:37:09 by havyilma          #+#    #+#             */
-/*   Updated: 2023/04/15 15:59:46 by havyilma         ###   ########.fr       */
+/*   Updated: 2023/04/18 15:43:35 by havyilma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ft_rra (t_data *data)
+void	ft_rra(t_data *data)
 {
 	int	i;
 	int	temp;
@@ -23,10 +23,10 @@ void	ft_rra (t_data *data)
 	while (--i > 0)
 		data->stack_a[i] = data->stack_a[i - 1];
 	data->stack_a[i] = temp;
-	write (1, "rra\n", 4);
+	write(1, "rra\n", 4);
 }
 
-void	ft_rrb (t_data *data)
+void	ft_rrb(t_data *data)
 {
 	int	i;
 	int	temp;
@@ -37,7 +37,7 @@ void	ft_rrb (t_data *data)
 	while (--i > 0)
 		data->stack_b[i] = data->stack_b[i - 1];
 	data->stack_b[i] = temp;
-	write (1, "rrb\n", 4);
+	write(1, "rrb\n", 4);
 }
 
 void	ft_rrr(t_data *data)
@@ -58,5 +58,5 @@ void	ft_rrr(t_data *data)
 	while (--i > 0)
 		data->stack_b[i] = data->stack_b[i - 1];
 	data->stack_b[i] = tempb;
-	write (1, "rrr\n", 4);
+	write(1, "rrr\n", 4);
 }
